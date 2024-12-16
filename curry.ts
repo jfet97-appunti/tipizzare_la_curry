@@ -68,7 +68,7 @@ namespace V5 {
   //
   // T "libero" ma poi forziamo il primo elemento = P[0], il resto come P ma opzionale
   type CurryV5<P extends readonly any[], R> = <T extends readonly any[]>(
-    ...args: Any.Cast<T, Tuple.Concat<[P[0]], Tuple.Drop<Partial<P>, 1>>>
+    ...args: Any.Cast<T, Tuple.Concat<[P[0]], Tuple.Drop<Partial<P>, 1>>> // | [] per far funzionare t5 sotto
   ) => Tuple.Drop<P, T["length"]> extends [any, ...any[]]
     ? CurryV5<
       Tuple.Drop<P, T["length"]>,
